@@ -29,16 +29,52 @@ function setDisplay(num){
   display.textContent = num;
 }
 
+function getDisplay(){
+  const display = document.querySelector('.output');
+  return display.textContent;
+}
+
 const numKeys = document.querySelectorAll('.numKey');
 const operateKey = document.querySelector('.operate');
 const operatorKeys = document.querySelectorAll('.operator');
 
 let num1 = '';
 let num2 = '';
-let operatorKey = '';
+let opKey = '';
 
+//gets numkey presses
+numKeys.forEach((items) => {
+  items.addEventListener("click", ()=> {
+    if(!(opKey === '')){
+      num2 += items.textContent.toString();
+      setDisplay(num2);
+    }
+    else{
+      num1 += items.textContent.toString();
+      setDisplay(num1); 
+    }
+  })
+});
 
+//stores operator key
+operatorKeys.forEach((items) =>{
+  items.addEventListener("click", ()=>{
+    opKey = items.textContent;
+  })
+});
+
+//On "equals" btn press, operates
 operateKey.addEventListener('click', ()=>{
-  let total = operate(+num1, operatorKey, +num2);
+  let total = operate(+num1, opKey, +num2);
+  num1 = total;
+  num2 = '';
   setDisplay(total);
-})
+});
+
+//Clear all values and display
+document.querySelector('.clear').addEventListener('click', ()=>{
+  num1 = '',
+  num2 = '',
+  opKey = '';
+  setDisplay(num1);
+});
