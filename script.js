@@ -1,13 +1,25 @@
 function getAddition(num1, num2){
-  return num1 + num2;
+  let temp = num1 + num2;
+  setDisplay(temp)
+  return temp;
 }
 function getSubtraction(num1, num2){
-  return num1 - num2;
+  let temp = num1 - num2;
+  setDisplay(temp)
+  return temp;
 }
 function getMultiplication(num1, num2){
-  return num1 * num2;
+  let temp = num1 * num2;
+  setDisplay(temp)
+  return temp;
 }
 function getDivision(num1, num2){
+  if(num2 === 0){
+    setDisplay('LOL');
+    return '';
+  }
+  let temp = Math.round((num1 / num2)*1000000)/1000000;
+  setDisplay(temp)
   return num1 / num2;
 }
 
@@ -68,7 +80,7 @@ operateKey.addEventListener('click', ()=>{
     total = operate(+num1, opKey, +num2);
     num1 = '';
     num2 = '';
-    setDisplay(total);
+    opKey = '';
   }
 });
 
@@ -78,5 +90,5 @@ document.querySelector('.clear').addEventListener('click', ()=>{
   num2 = '',
   opKey = '';
   total = '';
-  setDisplay(num1);
+  setDisplay('');
 });
