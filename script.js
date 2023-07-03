@@ -29,11 +29,6 @@ function setDisplay(num){
   display.textContent = num;
 }
 
-function getDisplay(){
-  const display = document.querySelector('.output');
-  return display.textContent;
-}
-
 const numKeys = document.querySelectorAll('.numKey');
 const operateKey = document.querySelector('.operate');
 const operatorKeys = document.querySelectorAll('.operator');
@@ -41,11 +36,12 @@ const operatorKeys = document.querySelectorAll('.operator');
 let num1 = '';
 let num2 = '';
 let opKey = '';
+let total = '';
 
-//gets numkey presses
+//gets numkey clicks
 numKeys.forEach((items) => {
   items.addEventListener("click", ()=> {
-    if(!(opKey === '')){
+    if(!(opKey === '') && !(num1 === '')){ //starts num2 string
       num2 += items.textContent.toString();
       setDisplay(num2);
     }
@@ -56,19 +52,24 @@ numKeys.forEach((items) => {
   })
 });
 
-//stores operator key
+//stores operator key clicked
 operatorKeys.forEach((items) =>{
   items.addEventListener("click", ()=>{
+    if(!(total === '') && num1 === ''){ //continues to add previous answer
+      num1 = total;
+    }
     opKey = items.textContent;
   })
 });
 
-//On "equals" btn press, operates
+//On "equals" btn click, operates
 operateKey.addEventListener('click', ()=>{
-  let total = operate(+num1, opKey, +num2);
-  num1 = total;
-  num2 = '';
-  setDisplay(total);
+  if(!(num1 === '') && !(num2 === '')){ //prevents total to be NaN
+    total = operate(+num1, opKey, +num2);
+    num1 = '';
+    num2 = '';
+    setDisplay(total);
+  }
 });
 
 //Clear all values and display
@@ -76,5 +77,6 @@ document.querySelector('.clear').addEventListener('click', ()=>{
   num1 = '',
   num2 = '',
   opKey = '';
+  total = '';
   setDisplay(num1);
 });
