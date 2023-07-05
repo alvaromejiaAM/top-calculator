@@ -3,22 +3,119 @@ body, html{
   justify-content: center;
   align-items: center;
   height: 100%;
+  width: 100%;
+  font-family: 'Arial', 'Helvetica', 'sans-serif';
 }
 
+.container{
+  display: flex;
+  flex-direction: column;
+  width: 700px;
+  height: 650px;
+  background-color: rgba(27, 25, 25, 0.886);
+  border-radius: 18px;
+  padding-bottom: 50px;
+  padding-right: 20px;
+}
+
+.top{
+  display: flex;
+  justify-content: center;
+  padding: 30px 2px;
+}
 
 .output{
   border: 1px solid rgb(220, 204, 204);
-  width: 240px;
+  background-color: rgba(177, 238, 177, 0.898);
+  width: 90%;
+  height: 75px;
+  border-radius: 20px;
+  font-size: 60px;
+  padding-right: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: end;
 }
 
-.numKey, .plus, .minus{
-  padding: 10px 20px;
+.buttons{
+  display: flex;
+  flex-wrap: wrap;
+  flex: 1;
+  padding-top: 15px;
 }
 
-.multi, .divide, .clear{
-  padding: 8px 15px;
+.numberBtns{
+  display: flex;
+  flex-wrap: wrap-reverse;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex: 1 1 66%;
+  gap: 5px;
+}
+
+.operators{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: end;
+  flex: 1;
+  gap: 16px;
+  padding-right: 30px;
+}
+
+.operator{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  flex: 1;
+  font-size: 50px;
+  font-weight: lighter;
+  border: none;
+  border-radius: 0;
+  color: #f6f6f6;
+  background-color: #aba8a8;
 }
 
 .operate{
-  padding: 25px 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  font-size: 50px;
+  width: 80px;
+  background-color: #f76848;
+  border: none;
+  border-radius: 0;
+  color: #f6f6f6;
+}
+
+.numKey{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 70px;
+  height: 120px;
+  width: 150px;
+  border-radius: 0;
+  border: none;
+  color: #f6f6f6;
+  background-color: #c0bdbd;
+}
+
+.btnZero, .clear{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0;
+  border: none;
+  color: #f6f6f6;
+  background-color: #c0bdbd;
+  width: 225px;
+  height: 120px;
+}
+
+.clear{
+  font-size: 45px;
 }
